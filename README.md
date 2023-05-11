@@ -1,2 +1,2 @@
-# odin-etch-a-sketch
+# Etch-A-Sketch game
 Etch-A-Sketch game
