@@ -11,12 +11,12 @@ Be careful with borders and margins, as they can adjust the size of the squares!
 let container = document.getElementById('gridContainer');
 let rows = document.getElementsByClassName('row');
 //create 16x16 div grid 
-function grid (makeRow, makeColumn) {
+function gridContainer (makeRow, makeColumn) {
     makeRow(16);
     makeColumn(16);
 };
 //fire grid function
-console.log(grid(makeRow, makeColumn));
+console.log(gridContainer(makeRow, makeColumn));
 
 //rows function - create 16 div row containers and append it to main div container
 function makeRow (num) {
@@ -41,7 +41,7 @@ function makeColumn (num) {
             /* gridColumn.classList.toggle('column'); */
             let gridSquare = rows[i].appendChild(gridColumn);
             gridSquare.classList.toggle('square');
-            gridSquare.style.cssText = 'background:lightgrey; padding:4px';
+            gridSquare.style.cssText = 'background:lightgrey; padding:12px';
             gridSquare.style.display = 'flex';
         };
     };
@@ -51,7 +51,13 @@ function makeColumn (num) {
 let count = document.querySelectorAll('.square').length;
     console.log(count);
 
-
+///hover effect
+let squareHover = document.getElementsByClassName('square');
+for (let i = 0; i < squareHover.length; i++) {
+    squareHover[i].addEventListener('mouseover', () => {
+        squareHover[i].style.cssText = 'background: black; padding:12px';
+    });
+};
 
 //create hover effect
 //first row
