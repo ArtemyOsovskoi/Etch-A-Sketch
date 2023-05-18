@@ -10,7 +10,7 @@ Be careful with borders and margins, as they can adjust the size of the squares!
 //store variables
 let container = document.getElementById('gridContainer');
 let rows = document.getElementsByClassName('row');
-//create 16x16 div grid 
+//create default 16x16 div grid 
 function gridContainer (makeRow, makeColumn) {
     makeRow(16);
     makeColumn(16);
@@ -58,3 +58,33 @@ for (let i = 0; i < squareHover.length; i++) {
         squareHover[i].style.cssText = 'background: black; padding:12px';
     });
 };
+
+//change grid size button - get popup after click, enter the number and get new grid size
+/* Add a button that will send the user a popup asking for the number of squares per side for the new grid. 
+Once entered, the existing grid should be removed and a new grid should be generated 
+in the same total space as before (e.g. 960px wide) so that you’ve got a new sketch pad
+
+Tip: Set the limit for the user input to a maximum of 100. 
+Research button tags in HTML and how you can make a JavaScript function run when one is clicked.
+Also check out prompts.
+You should be able to enter 64 and have a brand new 64x64 grid pop up without changing the total amount of pixels used. */
+//access button
+let changeGridButton = document.getElementById('changeGridButton');
+
+//change grid button
+changeGridButton.addEventListener('click', () => {
+    let askSize = Number(window.prompt('Please enter the number of squares less than 100', ''));
+    console.log(askSize);
+    if (askSize < 100) {
+        function gridContainer (makeRow, makeColumn) {
+            makeRow(askSize);
+            makeColumn(askSize);
+        };
+        return gridContainer(makeRow, makeColumn);
+    } else if (askSize > 100) {
+        alert('Please enter any number below 100');
+    };
+});
+
+
+
