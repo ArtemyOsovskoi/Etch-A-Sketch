@@ -16,7 +16,7 @@ function gridContainer (makeRow, makeColumn) {
     makeColumn(16);
 };
 //fire grid function
-console.log(gridContainer(makeRow, makeColumn));
+gridContainer(makeRow, makeColumn);
 
 //rows function - create 16 div row containers and append it to main div container
 function makeRow (num) {
@@ -25,6 +25,7 @@ function makeRow (num) {
         gridRow.classList.toggle('row');
         container.appendChild(gridRow);
         gridRow.style.display = 'flex';
+        gridRow.style.flex = 1;
     };
 };
 
@@ -38,11 +39,12 @@ function makeColumn (num) {
     for(c = 0; c < rows.length; c++) {
         for (i = 0; i < num; i++) {
             let gridColumn = document.createElement('div');
-            /* gridColumn.classList.toggle('column'); */
             let gridSquare = rows[i].appendChild(gridColumn);
             gridSquare.classList.toggle('square');
-            gridSquare.style.cssText = 'background:lightgrey; padding:12px';
+            gridSquare.style.cssText = 'background:lightgrey; padding:5px';
+            gridSquare.style.border = 'thin solid black';
             gridSquare.style.display = 'flex';
+            gridSquare.style.flex = 1;
         };
     };
 };
@@ -55,7 +57,10 @@ let count = document.querySelectorAll('.square').length;
 let squareHover = document.getElementsByClassName('square');
 for (let i = 0; i < squareHover.length; i++) {
     squareHover[i].addEventListener('mouseover', () => {
-        squareHover[i].style.cssText = 'background: black; padding:12px';
+        squareHover[i].style.cssText = 'background: black; padding:5px';
+        squareHover[i].style.border = 'thin solid black';
+        squareHover[i].style.display = 'flex';
+        squareHover[i].style.flex = 1;
     });
 };
 
@@ -68,10 +73,8 @@ Tip: Set the limit for the user input to a maximum of 100.
 Research button tags in HTML and how you can make a JavaScript function run when one is clicked.
 Also check out prompts.
 You should be able to enter 64 and have a brand new 64x64 grid pop up without changing the total amount of pixels used. */
-//access button
-let changeGridButton = document.getElementById('changeGridButton');
-
 //change grid button
+let changeGridButton = document.getElementById('changeGridButton');
 changeGridButton.addEventListener('click', () => {
     let askSize = Number(window.prompt('Please enter the number of squares less than 100', ''));
     console.log(askSize);
@@ -83,8 +86,19 @@ changeGridButton.addEventListener('click', () => {
         return gridContainer(makeRow, makeColumn);
     } else if (askSize > 100) {
         alert('Please enter any number below 100');
-    };
+    };  
 });
 
-
-
+//eraser button
+let eraserButton = document.getElementById('eraser');
+eraserButton.addEventListener('click', () => {
+    let eraserHover = document.getElementsByClassName('square');
+    for (let i = 0; i < eraserHover.length; i++) {
+        eraserHover[i].addEventListener('click', () => {
+        eraserHover[i].style.cssText = 'background: lightgrey; padding:5px';
+        eraserHover[i].style.border = 'thin solid black';
+        eraserHover[i].style.display = 'flex';
+        eraserHover[i].style.flex = 1;
+    });
+};
+});
