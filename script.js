@@ -10,13 +10,16 @@ Be careful with borders and margins, as they can adjust the size of the squares!
 //store variables
 let container = document.getElementById('gridContainer');
 let rows = document.getElementsByClassName('row');
+let columns = document.getElementsByClassName('column');
+let squares = document.getElementsByClassName('square');
+
 //create default 16x16 div grid 
-function gridContainer (makeRow, makeColumn) {
+function makeGrid (makeRow, makeColumn) {
     makeRow(16);
     makeColumn(16);
 };
 //fire grid function
-gridContainer(makeRow, makeColumn);
+makeGrid(makeRow, makeColumn);
 
 //rows function - create 16 div row containers and append it to main div container
 function makeRow (num) {
@@ -24,8 +27,8 @@ function makeRow (num) {
         let gridRow = document.createElement('div');
         gridRow.classList.toggle('row');
         container.appendChild(gridRow);
-        gridRow.style.display = 'flex';
-        gridRow.style.flex = 1;
+ /*     gridRow.style.display = 'flex';
+        gridRow.style.flex = 1; */
     };
 };
 
@@ -39,12 +42,10 @@ function makeColumn (num) {
     for(c = 0; c < rows.length; c++) {
         for (i = 0; i < num; i++) {
             let gridColumn = document.createElement('div');
+            gridColumn.classList.toggle('column');
             let gridSquare = rows[i].appendChild(gridColumn);
             gridSquare.classList.toggle('square');
-            gridSquare.style.cssText = 'background:lightgrey; padding:5px';
-            gridSquare.style.border = 'thin solid black';
-            gridSquare.style.display = 'flex';
-            gridSquare.style.flex = 1;
+            gridSquare.style.cssText = 'background:lightgrey;';
         };
     };
 };
@@ -57,36 +58,33 @@ let count = document.querySelectorAll('.square').length;
 let squareHover = document.getElementsByClassName('square');
 for (let i = 0; i < squareHover.length; i++) {
     squareHover[i].addEventListener('mouseover', () => {
-        squareHover[i].style.cssText = 'background: black; padding:5px';
-        squareHover[i].style.border = 'thin solid black';
-        squareHover[i].style.display = 'flex';
-        squareHover[i].style.flex = 1;
+        squareHover[i].style.cssText = 'background: black;';
     });
 };
 
-//change grid size button - get popup after click, enter the number and get new grid size
-/* Add a button that will send the user a popup asking for the number of squares per side for the new grid. 
-Once entered, the existing grid should be removed and a new grid should be generated 
-in the same total space as before (e.g. 960px wide) so that you’ve got a new sketch pad
-
-Tip: Set the limit for the user input to a maximum of 100. 
-Research button tags in HTML and how you can make a JavaScript function run when one is clicked.
-Also check out prompts.
-You should be able to enter 64 and have a brand new 64x64 grid pop up without changing the total amount of pixels used. */
 //change grid button
 let changeGridButton = document.getElementById('changeGridButton');
+
 changeGridButton.addEventListener('click', () => {
-    let askSize = Number(window.prompt('Please enter the number of squares less than 100', ''));
-    console.log(askSize);
+    let askSize = Number(window.prompt('Please set grid size, max 100', ''));
+        console.log(askSize+' '+'squares entered');//self check
+
+    //remove old grid with while loop
+    //when container.firstChild has no more children - the loop will stop. 
+    //it's removing child divs inside the container while container.firstChild (loop condition) is true.
+    while (container.firstChild) {
+        container.removeChild(container.lastChild);
+    };
+
     if (askSize < 100) {
-        function gridContainer (makeRow, makeColumn) {
+        function makeGrid (makeRow, makeColumn) {
             makeRow(askSize);
             makeColumn(askSize);
         };
-        return gridContainer(makeRow, makeColumn);
+    return makeGrid(makeRow, makeColumn);
     } else if (askSize > 100) {
         alert('Please enter any number below 100');
-    };  
+    };
 });
 
 //eraser button
@@ -94,11 +92,8 @@ let eraserButton = document.getElementById('eraser');
 eraserButton.addEventListener('click', () => {
     let eraserHover = document.getElementsByClassName('square');
     for (let i = 0; i < eraserHover.length; i++) {
-        eraserHover[i].addEventListener('click', () => {
-        eraserHover[i].style.cssText = 'background: lightgrey; padding:5px';
-        eraserHover[i].style.border = 'thin solid black';
-        eraserHover[i].style.display = 'flex';
-        eraserHover[i].style.flex = 1;
+        eraserHover[i].addEventListener('mouseover', () => {
+        eraserHover[i].style.cssText = 'background: lightgrey;';
     });
 };
 });
