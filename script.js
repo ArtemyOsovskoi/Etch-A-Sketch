@@ -14,7 +14,7 @@ let columns = document.getElementsByClassName('column');
 let squares = document.getElementsByClassName('square');
 
 //create default 16x16 div grid 
-function makeGrid (makeRow, makeColumn) {
+function makeGrid () {
     makeRow(16);
     makeColumn(16);
 };
@@ -27,7 +27,7 @@ function makeRow (num) {
         let gridRow = document.createElement('div');
         gridRow.classList.toggle('row');
         container.appendChild(gridRow);
- /*     gridRow.style.display = 'flex';
+     /* gridRow.style.display = 'flex';
         gridRow.style.flex = 1; */
     };
 };
@@ -55,34 +55,37 @@ let count = document.querySelectorAll('.square').length;
     console.log(count);
 
 ///hover effect
-let squareHover = document.getElementsByClassName('square');
-for (let i = 0; i < squareHover.length; i++) {
-    squareHover[i].addEventListener('mouseover', () => {
-        squareHover[i].style.cssText = 'background: black;';
-    });
-};
-
+function hover () {
+    let squareHover = document.getElementsByClassName('square');
+    for (let i = 0; i < squareHover.length; i++) {
+        squareHover[i].addEventListener('mouseover', () => {
+            squareHover[i].style.cssText = 'background: black;';
+        });
+    };
+}
+hover();
 //change grid button
 let changeGridButton = document.getElementById('changeGridButton');
 
 changeGridButton.addEventListener('click', () => {
-    let askSize = Number(window.prompt('Please set grid size, max 100', ''));
-        console.log(askSize+' '+'squares entered');//self check
+    let getSize = Number(window.prompt('Please set grid size, max 100', ''));
+        console.log(getSize+' '+'squares entered');//self check
 
     //remove old grid with while loop
-    //when container.firstChild has no more children - the loop will stop. 
-    //it's removing child divs inside the container while container.firstChild (loop condition) is true.
+    //when container.firstChild has no more children - the loop will stop
+    //it's removing child divs inside the container while container.firstChild (loop condition) is true
     while (container.firstChild) {
         container.removeChild(container.lastChild);
     };
 
-    if (askSize < 100) {
-        function makeGrid (makeRow, makeColumn) {
-            makeRow(askSize);
-            makeColumn(askSize);
-        };
-    return makeGrid(makeRow, makeColumn);
-    } else if (askSize > 100) {
+    if (getSize < 100) {
+        function changeGrid () {
+            makeRow(getSize);
+            makeColumn(getSize);
+        }
+        changeGrid(makeRow, makeColumn);
+        hover();
+    } else if (getSize > 100) {
         alert('Please enter any number below 100');
     };
 });
