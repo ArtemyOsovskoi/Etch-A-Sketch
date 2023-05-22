@@ -1,6 +1,5 @@
-# Etch-A-Sketch game
-Etch-A-Sketch game
-
+# Etch-A-Sketch 
+Live: 
 ## Overview
 In this project I aim to create functional etch-a-sketch minigame, where user can draw squares with multiple colors on a square grid.
 
