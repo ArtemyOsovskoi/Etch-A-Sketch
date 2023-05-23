@@ -64,6 +64,7 @@ function hover () {
     };
 }
 hover();
+
 //change grid button
 let changeGridButton = document.getElementById('changeGridButton');
 
@@ -99,4 +100,13 @@ eraserButton.addEventListener('click', () => {
         eraserHover[i].style.cssText = 'background: lightgrey;';
     });
 };
+});
+
+//clean all function
+let cleanButton = document.getElementById('cleanAll');
+cleanButton.addEventListener('click', () => {
+    let allSquares = document.getElementsByClassName('square');
+    for (let i = 0; i < allSquares.length; i++) {  
+        allSquares[i].style.cssText = 'background: lightgrey;';
+    }
 });
