@@ -49,7 +49,6 @@ function makeColumn (num) {
         };
     };
 };
-
 //self check: count divs 
 let count = document.querySelectorAll('.square').length;
     console.log(count);
@@ -57,13 +56,25 @@ let count = document.querySelectorAll('.square').length;
 ///hover effect
 function hover () {
     let squareHover = document.getElementsByClassName('square');
+    let colorPick = document.getElementById('colorpicker');
     for (let i = 0; i < squareHover.length; i++) {
         squareHover[i].addEventListener('mouseover', () => {
-            squareHover[i].style.cssText = 'background: black;';
+            squareHover[i].style.backgroundColor = colorPick.value;
         });
     };
 }
 hover();
+
+//random color function 
+let magicButton = document.getElementById('magic');
+let squareHover = document.getElementsByClassName('square');
+magicButton.addEventListener('click', () => {
+    for (let i = 0; i < squareHover.length; i++) {
+       squareHover[i].addEventListener('mouseover', () => {
+            squareHover[i].style.backgroundColor = "#" + Math.floor(Math.random()*16777215).toString(16); //generate random color hex code
+        }); 
+    };
+});
 
 //change grid button
 let changeGridButton = document.getElementById('changeGridButton');
@@ -78,7 +89,6 @@ changeGridButton.addEventListener('click', () => {
     while (container.firstChild) {
         container.removeChild(container.lastChild);
     };
-
     if (getSize < 100) {
         function changeGrid () {
             makeRow(getSize);
@@ -110,3 +120,4 @@ cleanButton.addEventListener('click', () => {
         allSquares[i].style.cssText = 'background: lightgrey;';
     }
 });
+
