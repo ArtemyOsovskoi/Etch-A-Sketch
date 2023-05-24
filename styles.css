@@ -9,15 +9,28 @@ html,body {
     height: 100%;
 }
 
+#main {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+#playground {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
 #gridContainer {
     display: flex;
     flex-direction: column;
     /* flex: 1; */
     flex-wrap: wrap;
-    margin-left: auto;
-    margin-right: auto;
-    width: 960px;
-    height: 960px;
+/*     margin-left: auto;
+    margin-right: auto; */
+    width: 760px;
+    height: 760px;
     border: 1px solid blue;
 }
 
@@ -31,4 +44,13 @@ html,body {
     border: thin solid black;
     display: flex;
     flex: 1;
+}
+
+#options {
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    padding:20px;
 }
