@@ -76,6 +76,12 @@ magicButton.addEventListener('click', () => {
     };
 });
 
+//draw button
+let drawButton = document.getElementById('draw');
+drawButton.addEventListener('click', () => {
+    hover();
+});
+
 //change grid button
 let changeGridButton = document.getElementById('changeGridButton');
 
@@ -112,12 +118,20 @@ eraserButton.addEventListener('click', () => {
 };
 });
 
-//clean all function
-let cleanButton = document.getElementById('cleanAll');
-cleanButton.addEventListener('click', () => {
+//reset function
+let resetButton = document.getElementById('reset');
+resetButton.addEventListener('click', () => {
     let allSquares = document.getElementsByClassName('square');
     for (let i = 0; i < allSquares.length; i++) {  
         allSquares[i].style.cssText = 'background: lightgrey;';
     }
+
+    let colorPick = document.getElementById('colorpicker');
+    for (let i = 0; i < allSquares.length; i++) {
+        allSquares[i].addEventListener('mouseover', () => {
+            allSquares[i].style.backgroundColor = '#000000';
+        });
+    };
+
 });
 
