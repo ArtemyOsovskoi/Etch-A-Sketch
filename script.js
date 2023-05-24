@@ -82,30 +82,26 @@ drawButton.addEventListener('click', () => {
     hover();
 });
 
-//change grid button
-let changeGridButton = document.getElementById('changeGridButton');
-
-changeGridButton.addEventListener('click', () => {
-    let getSize = Number(window.prompt('Please set grid size, max 100', ''));
-        console.log(getSize+' '+'squares entered');//self check
-
+//grid slider function
+let slider = document.getElementById('gridSlider');
+slider.addEventListener('mousemove', () => {
+    let sliderValue = slider.value;
     //remove old grid with while loop
     //when container.firstChild has no more children - the loop will stop
     //it's removing child divs inside the container while container.firstChild (loop condition) is true
     while (container.firstChild) {
         container.removeChild(container.lastChild);
     };
-    if (getSize < 100) {
+    if (sliderValue < 61) {
         function changeGrid () {
-            makeRow(getSize);
-            makeColumn(getSize);
+            makeRow(sliderValue);
+            makeColumn(sliderValue);
         }
         changeGrid(makeRow, makeColumn);
         hover();
-    } else if (getSize > 100) {
-        alert('Please enter any number below 100');
     };
-});
+}); 
+
 
 //eraser button
 let eraserButton = document.getElementById('eraser');
