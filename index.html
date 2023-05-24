@@ -9,14 +9,20 @@
     </head>
 
     <body>
-        <header>
-            <h1>Etch-A-Sketch</h1>
-        </header>
-        <button id="changeGridButton">Change size</button>
-        <button id="eraser">Eraser</button>
-        <button id="cleanAll">Clean</button>
-        <div id="gridContainer"></div>
-
+        <div id="main">
+            <div id="options">
+                <label for="colorpicker">Color Picker:</label>
+                <input type="color" id="colorpicker" value="#0f0000">
+                <button id="changeGridButton">Change size</button>
+                <button id="eraser">Eraser</button>
+                <button id="cleanAll">Clean</button>
+                <button id="magic">Add some magic</button>
+            </div>
+            <div id="playground">
+                <h1>Etch-A-Sketch</h1>
+                <div id="gridContainer"></div>
+            </div>
+        </div>
 <!--         <footer>
             <div class="footer">
             <p>Copyright © 
