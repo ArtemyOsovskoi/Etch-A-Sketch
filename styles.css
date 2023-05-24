@@ -54,3 +54,14 @@ html,body {
 button {
     padding:20px;
 }
+
+.sliderSize {
+    display: flex;
+
+}
+
+.slider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
