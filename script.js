@@ -84,8 +84,9 @@ drawButton.addEventListener('click', () => {
 
 //grid slider function
 let slider = document.getElementById('gridSlider');
-slider.addEventListener('mousemove', () => {
+slider.addEventListener('click', () => {
     let sliderValue = slider.value;
+    let sliderOutput = document.getElementById('sliderOutput');
     //remove old grid with while loop
     //when container.firstChild has no more children - the loop will stop
     //it's removing child divs inside the container while container.firstChild (loop condition) is true
@@ -100,8 +101,11 @@ slider.addEventListener('mousemove', () => {
         changeGrid(makeRow, makeColumn);
         hover();
     };
+    //show current slider value
+    slider.oninput = function() {
+    sliderOutput.innerHTML = this.value;
+    };
 }); 
-
 
 //eraser button
 let eraserButton = document.getElementById('eraser');
