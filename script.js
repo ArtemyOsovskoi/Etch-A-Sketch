@@ -46,6 +46,7 @@ function makeColumn (num) {
             let gridSquare = rows[i].appendChild(gridColumn);
             gridSquare.classList.toggle('square');
             gridSquare.style.cssText = 'background:lightgrey;';
+            gridSquare.style.border = 'thin solid black';
         };
     };
 };
@@ -118,12 +119,22 @@ eraserButton.addEventListener('click', () => {
 };
 });
 
+//show squares function
+let showSquares = document.getElementById('showSquares');
+showSquares.addEventListener('click', () => {
+    let squareBorders = document.getElementsByClassName('square');
+    for (let i = 0; i < squareBorders.length; i++) {  
+        squareBorders[i].style.border = 'none';
+    };
+});
+
 //reset function
 let resetButton = document.getElementById('reset');
 resetButton.addEventListener('click', () => {
     let allSquares = document.getElementsByClassName('square');
     for (let i = 0; i < allSquares.length; i++) {  
         allSquares[i].style.cssText = 'background: lightgrey;';
+        allSquares[i].style.border = 'thin solid black';
     }
 
     let colorPick = document.getElementById('colorpicker');
