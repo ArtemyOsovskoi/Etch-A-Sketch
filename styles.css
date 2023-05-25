@@ -25,13 +25,9 @@ html,body {
 #gridContainer {
     display: flex;
     flex-direction: column;
-    /* flex: 1; */
     flex-wrap: wrap;
-/*     margin-left: auto;
-    margin-right: auto; */
     width: 760px;
     height: 760px;
-    border: 1px solid blue;
 }
 
 .row {
@@ -41,7 +37,7 @@ html,body {
 
 .square {
     padding: 5px;
-    border: thin solid black;
+   /*  border: thin solid black; */
     display: flex;
     flex: 1;
 }
