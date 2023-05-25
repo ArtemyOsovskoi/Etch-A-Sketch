@@ -1,12 +1,3 @@
-/* Create a webpage with a 16x16 grid of square divs.
-Create the divs using JavaScript. 
-Don’t try making them by hand with copy and pasting in your HTML file!
-It’s best to put your grid squares inside another “container” div 
-(which can go directly in your HTML).
-You need make the divs appear as a grid (versus just one on each line). 
-This is a perfect opportunity to apply what you have learned about flexbox.
-Be careful with borders and margins, as they can adjust the size of the squares! */
-
 //store variables
 let container = document.getElementById('gridContainer');
 let rows = document.getElementsByClassName('row');
@@ -27,8 +18,6 @@ function makeRow (num) {
         let gridRow = document.createElement('div');
         gridRow.classList.toggle('row');
         container.appendChild(gridRow);
-     /* gridRow.style.display = 'flex';
-        gridRow.style.flex = 1; */
     };
 };
 
@@ -115,20 +104,28 @@ eraserButton.addEventListener('click', () => {
     for (let i = 0; i < eraserHover.length; i++) {
         eraserHover[i].addEventListener('mouseover', () => {
         eraserHover[i].style.cssText = 'background: lightgrey;';
-    });
-};
-});
-
-//show squares function
-let showSquares = document.getElementById('showSquares');
-showSquares.addEventListener('click', () => {
-    let squareBorders = document.getElementsByClassName('square');
-    for (let i = 0; i < squareBorders.length; i++) {  
-        squareBorders[i].style.border = 'none';
+        });
     };
 });
 
-//reset function
+//toggle square border style
+function toggle () {
+    let squareBorders = document.getElementsByClassName('square');
+    for (let i = 0; i < squareBorders.length; i++) {
+        if (squareBorders[i].style.border === 'thin solid black') {
+            squareBorders[i].style.border = 'none';
+        } else if (squareBorders[i].style.border === 'none') {
+            squareBorders[i].style.border = 'thin solid black';
+        }
+    }; 
+};
+
+let toggleButton = document.getElementById('toggle-button');
+toggleButton.addEventListener('click', () => {
+    toggle();
+});
+
+//reset function - toggle
 let resetButton = document.getElementById('reset');
 resetButton.addEventListener('click', () => {
     let allSquares = document.getElementsByClassName('square');
@@ -143,6 +140,5 @@ resetButton.addEventListener('click', () => {
             allSquares[i].style.backgroundColor = '#000000';
         });
     };
-
 });
 
