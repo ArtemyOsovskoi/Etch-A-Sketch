@@ -11,13 +11,15 @@
     <body>
         <div id="main">
             <div id="options">
-                <label for="colorpicker">Color Picker:</label>
-                <input type="color" id="colorpicker" value="#0f0000">
+                <div id="colorPicker">
+                    <label for="colorpicker"></label>
+                    <input type="color" id="colorpicker" value="#0f0000">
+                </div>
                 <button id="draw">Draw</button>
                 <button id="eraser">Eraser</button>
                 <div class="toggleContainer">
                     <input type="checkbox" id="toggle-button" class="toggle-button">
-                    <label for="toggle-button" class="text">Squares</label>
+                    <label for="toggle-button" class="text">Borders</label>
                 </div>
                 <button id="reset">Reset</button>
                 <button id="magic">Magic</button>
@@ -31,18 +33,19 @@
             <div id="playground">
                 <h1>Etch-A-Sketch</h1>
                 <div id="gridContainer"></div>
+                <footer>
+                <div class="footer">
+                    <p>Copyright © 
+                    <script>
+                        document.write(new Date().getFullYear())
+                    </script>
+                    </p>
+                    <a href="https://github.com/ArtemyOsovskoi">artemy.o</a>
+                    <img class="githubicon" src="images/gitHubTransparent.png" width = "32px" height = "32px" alt="GitHub icon">
+                </div>
+            </footer>
             </div>
         </div>
-        <footer>
-            <div class="footer">
-                <p>Copyright © 
-                <script>
-                    document.write(new Date().getFullYear())
-                </script>
-                </p>
-                <a href="https://github.com/ArtemyOsovskoi">artemy.o</a>
-                <img class="githubicon" src="images/gitHubTransparent.png" width = "32px" height = "32px" alt="GitHub icon">
-            </div>
-        </footer>
+
     </body>
 </html>
