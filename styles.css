@@ -7,12 +7,21 @@
 html,body {
     width: 100%;
     height: 100%;
+    background-color: lightgray;
 }
 
 #main {
     display: flex;
     justify-content: center;
     margin-top: 50px;
+    gap: 20px;
+}
+
+#options {
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 #playground {
@@ -41,9 +50,10 @@ html,body {
     flex: 1;
 }
 
-#options {
+#colorPicker {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 button {
@@ -52,13 +62,18 @@ button {
 
 .sliderSize {
     display: flex;
-
 }
 
 .slider {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.toggleContainer {
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .toggle-button {
@@ -108,4 +123,46 @@ button {
     }
     .toggle-button:checked {
     background-color: blue;
+}
+
+footer {
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.footer {
+    display: flex;
+    font-size: 18px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.footer a {
+    margin-left: 10px;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: orange;
+}
+
+.githubicon {
+    background-color: transparent;
+    margin-left: 10px;
+}
+
+/* responsiveness */
+@media(max-width: 768px) {
+    body {
+        flex-direction: column;
+        padding-top: 20px;
+        text-align: center;
+    }
+
+    html, body { 
+        margin: auto; 
+        height: 100%; 
+        overflow: auto;
+    } 
 }
