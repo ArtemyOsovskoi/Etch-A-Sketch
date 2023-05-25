@@ -34,14 +34,14 @@ function makeColumn (num) {
             gridColumn.classList.toggle('column');
             let gridSquare = rows[i].appendChild(gridColumn);
             gridSquare.classList.toggle('square');
-            gridSquare.style.cssText = 'background:lightgrey;';
+            gridSquare.style.cssText = 'background: white;';
             gridSquare.style.border = 'thin solid black';
         };
     };
 };
-//self check: count divs 
+/* //self check: count divs 
 let count = document.querySelectorAll('.square').length;
-    console.log(count);
+    console.log(count); */
 
 ///hover effect
 function hover () {
@@ -93,8 +93,9 @@ slider.addEventListener('click', () => {
     };
     //show current slider value
     slider.oninput = function() {
-    sliderOutput.innerHTML = this.value;
+        sliderOutput.innerHTML = this.value;
     };
+
 }); 
 
 //eraser button
@@ -103,7 +104,12 @@ eraserButton.addEventListener('click', () => {
     let eraserHover = document.getElementsByClassName('square');
     for (let i = 0; i < eraserHover.length; i++) {
         eraserHover[i].addEventListener('mouseover', () => {
-        eraserHover[i].style.cssText = 'background: lightgrey;';
+            eraserHover[i].style.backgroundColor = 'white';
+            if (eraserHover[i].style.border === 'thin solid black') {
+                eraserHover[i].style.border = 'thin solid black';
+            } else {
+                eraserHover[i].style.border = 'none';
+            }
         });
     };
 });
@@ -119,18 +125,17 @@ function toggle () {
         }
     }; 
 };
-
 let toggleButton = document.getElementById('toggle-button');
 toggleButton.addEventListener('click', () => {
     toggle();
 });
 
-//reset function - toggle
+//reset function 
 let resetButton = document.getElementById('reset');
 resetButton.addEventListener('click', () => {
     let allSquares = document.getElementsByClassName('square');
     for (let i = 0; i < allSquares.length; i++) {  
-        allSquares[i].style.cssText = 'background: lightgrey;';
+        allSquares[i].style.cssText = 'background: white;';
         allSquares[i].style.border = 'thin solid black';
     }
 
@@ -140,5 +145,14 @@ resetButton.addEventListener('click', () => {
             allSquares[i].style.backgroundColor = '#000000';
         });
     };
+    while (container.firstChild) {
+        container.removeChild(container.lastChild);
+    };
+    function resetGrid () {
+            makeRow(16);
+            makeColumn(16);
+        };
+    resetGrid(makeRow, makeColumn);
+    hover();
 });
 
