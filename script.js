@@ -157,5 +157,9 @@ resetButton.addEventListener('click', () => {
         };
     resetGrid(makeRow, makeColumn);
     hover();
+    //reset slider value
+    let sliderOutput = document.getElementById('sliderOutput');
+    document.getElementById('gridSlider').value = '16';
+    sliderOutput.innerHTML = '16';
 });
 
