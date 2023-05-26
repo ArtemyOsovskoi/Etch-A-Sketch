@@ -86,7 +86,7 @@ slider.addEventListener('click', () => {
     while (container.firstChild) {
         container.removeChild(container.lastChild);
     };
-    if (sliderValue < 61) {
+    if (sliderValue < 56) {
         function changeGrid () {
             makeRow(sliderValue);
             makeColumn(sliderValue);
