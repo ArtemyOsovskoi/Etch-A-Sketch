@@ -65,6 +65,9 @@ magicButton.addEventListener('click', () => {
         }); 
     };
 });
+magicButton.addEventListener('mouseover', () => {
+    magicButton.style.backgroundColor = "#" + Math.floor(Math.random()*16777215).toString(16);
+});
 
 //draw button
 let drawButton = document.getElementById('draw');
