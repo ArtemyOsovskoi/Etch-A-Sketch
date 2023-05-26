@@ -98,6 +98,9 @@ button:hover {
     color: white;
 }
 
+button#magic:hover {
+ background-color: --- ;
+}
 .sliderSize {
     display: flex;
 }
