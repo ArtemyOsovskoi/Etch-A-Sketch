@@ -13,7 +13,7 @@ JavaScript
 
 ## Status
 Started 11.05.2023
-Currently working on it.
+Finished 26.05.2023
 
 ## Conclusion
 This project was fun. I learned DOM manipulation and some CSS rules. I want to dig deeper into JS and make more difficult projects in the future, but that was a good step forward. I'll keep my code as it is, it'll be a good reference point. 
